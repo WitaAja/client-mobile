@@ -58,6 +58,7 @@ class _ImageCarouselState extends State<ImageCarousel> {
         asset: item,
         height: Get.width < 500 ? 500 : Get.width.floor(),
         width: Get.width < 500 ? 500 : Get.width.floor(),
+        spinner: CupertinoActivityIndicator(),
       );
     }).toList();
   }
