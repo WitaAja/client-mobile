@@ -8,7 +8,6 @@ import 'package:wisata_aja/models/postings/postings_model.dart';
 import 'package:wisata_aja/utils/constant.dart';
 import 'package:wisata_aja/utils/formatting/formatting_date.dart';
 import 'package:wisata_aja/widgets/expandable_text.dart';
-import 'package:wisata_aja/widgets/photo_profile.dart';
 
 class DetailPost extends StatelessWidget {
   final PostingModel post;

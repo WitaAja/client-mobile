@@ -33,6 +33,7 @@ import 'blocs/bottom_bar/bottom_bar_state.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   HydratedCubit.storage = await HydratedStorage.build();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   setUpLocators();
   PreCachePicture.loadCache();
   await Firebase.initializeApp();

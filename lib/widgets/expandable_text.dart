@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:wisata_aja/colors.dart';
 
 class ExpandableText extends StatefulWidget {
-  const ExpandableText(this.text, {Key key, this.trimLines = 2, this.textStyle})
+  const ExpandableText(this.text, {Key key, this.trimLines = 2, this.textStyle, this.isReadLess = false})
       : assert(text != null),
         super(key: key);
 
   final String text;
   final int trimLines;
   final TextStyle textStyle;
+  final bool isReadLess;
 
   @override
   ExpandableTextState createState() => ExpandableTextState();
@@ -19,6 +20,7 @@ class ExpandableTextState extends State<ExpandableText> {
   bool _readMore = true;
 
   void _onTapLink() {
+    if (widget.isReadLess && _readMore) return;
     setState(() => _readMore = !_readMore);
   }
 
@@ -27,7 +29,7 @@ class ExpandableTextState extends State<ExpandableText> {
     final colorClickableText = ThemeColor.getInstance.get(context).secondaryTextColor;
     final widgetColor = ThemeColor.getInstance.get(context).primaryTextColor;
     TextSpan link = TextSpan(
-        text: _readMore ? "... read more" : " read less",
+        text: _readMore ? "... read more" : (widget.isReadLess ? " read less" : ""),
         style: TextStyle(
           color: colorClickableText,
         ),
