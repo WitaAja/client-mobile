@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:wisata_aja/colors.dart';
 import 'package:wisata_aja/models/category_model.dart';
 import 'package:wisata_aja/models/postings/postings_model.dart';
@@ -8,6 +9,7 @@ import 'package:wisata_aja/utils/constant.dart';
 import 'package:wisata_aja/utils/formatting/formatting_date.dart';
 import 'package:wisata_aja/widgets/expandable_text.dart';
 import 'package:wisata_aja/widgets/photo_profile.dart';
+import 'package:wisata_aja/widgets/posts/detail_post.dart';
 
 class PostsWidget extends StatelessWidget {
   final PostingModel post;
@@ -17,9 +19,21 @@ class PostsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 5, bottom: 10),
+      padding: const EdgeInsets.only(top: 5, bottom: 5),
       child: Column(
-        children: [ProfileInformation(post), DescriptionPost(post)],
+        children: [
+          ProfileInformation(post),
+          GestureDetector(
+            onTap: () => Get.to(
+              DetailPost(
+                post: post,
+              ),
+            ),
+            child: Container(
+              child: DescriptionPost(post),
+            ),
+          )
+        ],
       ),
     );
   }
@@ -41,7 +55,7 @@ class ProfileInformation extends StatelessWidget {
             crossAxisAlignment: WrapCrossAlignment.center,
             children: [
               PhotoProfileWidget(
-                width: 30,
+                width: 20,
                 urlPhotoProfile: post.user.foto,
                 padding: const EdgeInsets.only(right: 10),
               ),
@@ -51,13 +65,6 @@ class ProfileInformation extends StatelessWidget {
                   Text(
                     post.user.name,
                     style: TextStyle(fontSize: FontSizeResponsive.fontSize30, fontWeight: FontWeight.w500),
-                  ),
-                  Text(
-                    DateFormatting.dateFormat(post.createdAt),
-                    style: TextStyle(
-                        fontSize: FontSizeResponsive.fontSize23,
-                        fontWeight: FontWeight.w400,
-                        color: ThemeColor.getInstance.get(context).secondaryTextColor),
                   ),
                 ],
               )
@@ -99,7 +106,7 @@ class DescriptionPost extends StatelessWidget {
         Builder(builder: (context) {
           if (post.postCategory.length > 0) {
             return Padding(
-              padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
+              padding: const EdgeInsets.only(left: 10, bottom: 5, top: 5),
               child: Wrap(
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
@@ -113,11 +120,11 @@ class DescriptionPost extends StatelessWidget {
                         color: CategoryModel.getColorCategory,
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      padding: const EdgeInsets.only(left: 8, right: 8, bottom: 3, top: 2),
+                      padding: const EdgeInsets.only(left: 10, right: 10, bottom: 3, top: 3),
                       margin: const EdgeInsets.only(right: 5),
                       child: Text(
                         data.asCategory.name,
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.white, fontSize: 12),
                       ),
                     ),
                 ],
@@ -127,7 +134,11 @@ class DescriptionPost extends StatelessWidget {
           return Container();
         }),
         Padding(
-          padding: const EdgeInsets.only(left: 10, bottom: 5, top: 5),
+          padding: const EdgeInsets.only(
+            left: 10,
+            bottom: 5,
+            top: 5,
+          ),
           child: Wrap(
             crossAxisAlignment: WrapCrossAlignment.center,
             children: [
@@ -143,12 +154,20 @@ class DescriptionPost extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(left: 15, right: 15, top: 5),
+          padding: const EdgeInsets.only(left: 15, right: 15, top: 5),
           child: ExpandableText(
             post?.description,
             trimLines: 2,
           ),
         ),
+        Padding(
+          padding: const EdgeInsets.only(left: 15, right: 15, top: 5),
+          child: Text(
+            DateFormatting.dateFormat(post.createdAt),
+            style: TextStyle(
+                fontSize: FontSizeResponsive.fontSize23, fontWeight: FontWeight.w400, color: ThemeColor.getInstance.get(context).secondaryTextColor),
+          ),
+        )
       ],
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:wisata_aja/blocs/my_postings/my_postings_bloc.dart';
 import 'package:wisata_aja/blocs/my_postings/my_postings_event.dart';
 import 'package:wisata_aja/blocs/my_postings/my_postings_state.dart';
@@ -12,6 +13,7 @@ import 'package:wisata_aja/screens/my_profile/widgets/drawer.dart';
 import 'package:wisata_aja/screens/my_profile/widgets/my_post.dart';
 import 'package:wisata_aja/screens/my_profile/widgets/my_profile_shimmer.dart';
 import 'package:wisata_aja/screens/my_profile/widgets/profile_information.dart';
+import 'package:wisata_aja/utils/constant.dart';
 
 class MyProfileScreen extends StatefulWidget {
   @override
@@ -66,7 +68,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                     profile: stateMyProfile.myProfile,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 30,bottom: 0),
+                    padding: EdgeInsets.only(top: 30, bottom: 0),
                     child: Divider(
                       color: ThemeColor.getInstance.get(context).greyColor,
                       thickness: 1,
@@ -78,7 +80,25 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                       if (stateMyPostings.myPostings.length > 0) {
                         return MyPost(posts: stateMyPostings);
                       }
-                      return Container();
+                      return Padding(
+                        padding: EdgeInsets.only(top: Get.height / 10),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.camera_alt_outlined,
+                              color: ThemeColor.getInstance.get(context).iconUnselected,
+                              size: 100,
+                            ),
+                            Text(
+                              'Belum ada post',
+                              style:
+                                  TextStyle(color: ThemeColor.getInstance.get(context).secondaryTextColor, fontSize: FontSizeResponsive.fontSize30),
+                            )
+                          ],
+                        ),
+                      );
                     },
                   ),
                 ],

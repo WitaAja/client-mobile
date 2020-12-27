@@ -3,15 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:wisata_aja/colors.dart';
 
 class ExpandableText extends StatefulWidget {
-  const ExpandableText(
-      this.text, {
-        Key key,
-        this.trimLines = 2,
-      })  : assert(text != null),
+  const ExpandableText(this.text, {Key key, this.trimLines = 2, this.textStyle})
+      : assert(text != null),
         super(key: key);
 
   final String text;
   final int trimLines;
+  final TextStyle textStyle;
 
   @override
   ExpandableTextState createState() => ExpandableTextState();
@@ -66,17 +64,14 @@ class ExpandableTextState extends State<ExpandableText> {
         if (textPainter.didExceedMaxLines) {
           textSpan = TextSpan(
             text: _readMore ? widget.text.substring(0, endIndex) : widget.text,
-            style: TextStyle(
-              color: widgetColor,
-            ),
+            style: widget.textStyle ?? TextStyle(color: widgetColor),
             children: <TextSpan>[link],
           );
         } else {
           textSpan = TextSpan(
-              text: widget.text,
-              style: TextStyle(
-                color: widgetColor,
-              ));
+            text: widget.text,
+            style: widget.textStyle ?? TextStyle(color: widgetColor),
+          );
         }
         return RichText(
           softWrap: true,
