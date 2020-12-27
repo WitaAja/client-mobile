@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "621728111362",
+    "project_id": "witaaja-894fa",
+    "storage_bucket": "witaaja-894fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:621728111362:android:e41cf0bf6bafd68452801b",
+        "android_client_info": {
+          "package_name": "com.witaaja"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "621728111362-t8fdhvmemj8ng40hjmn39hvl3vc3q009.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.witaaja",
+            "certificate_hash": "4fcf990e52b2589794bf4f8faff17c5ddefb8d85"
+          }
+        },
+        {
+          "client_id": "621728111362-p2kcre3ge6u8i7t4no9amp5ni3fj6o1r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBK7rHXEAm1aHerte1bw2Edrq9chdShjXU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "621728111362-p2kcre3ge6u8i7t4no9amp5ni3fj6o1r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
