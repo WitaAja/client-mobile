@@ -47,9 +47,11 @@ class ThemeDarkColor extends ThemeColor {
 }
 
 final List<Color> colorCategory = [
-  const Color(0xff5e68ff),
-  const Color(0xff49d1ff),
+  Colors.greenAccent,
   const Color(0xffe0e7b5),
+  const Color(0xff97904F),
+  const Color(0xff49d1ff),
+  const Color(0xff5e68ff),
   const Color(0xffedc4bc),
   const Color(0xffE8723D),
   const Color(0xff3DE8C9)

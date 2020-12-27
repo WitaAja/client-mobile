@@ -33,8 +33,13 @@ class CategoryModel {
     return data;
   }
 
-  static Color get getColorCategory {
-    return colorCategory[RandomNumber.getRandomNumber];
+  static Color getColorCategory(String id) {
+    try {
+      return colorCategory[int.parse(id)];
+    } catch (_) {
+      print(_);
+      return const Color(0xffF27575);
+    }
   }
 
   List<String> getCheckBox(List<Category> listCategory) {
@@ -60,7 +65,7 @@ class CategoryModel {
     }
   }
 
-  static bool isExist(List<String> listCategoryId,String id) {
+  static bool isExist(List<String> listCategoryId, String id) {
     try {
       final value = listCategoryId.where((element) => id == element);
       return value.isNotEmpty;
@@ -68,7 +73,6 @@ class CategoryModel {
       return false;
     }
   }
-
 }
 
 class Category {

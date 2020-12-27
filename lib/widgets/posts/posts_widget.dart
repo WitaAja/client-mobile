@@ -117,7 +117,7 @@ class DescriptionPost extends StatelessWidget {
                   for (final data in post.postCategory)
                     Container(
                       decoration: BoxDecoration(
-                        color: CategoryModel.getColorCategory,
+                        color: CategoryModel.getColorCategory(data.categoryId),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       padding: const EdgeInsets.only(left: 10, right: 10, bottom: 3, top: 3),
